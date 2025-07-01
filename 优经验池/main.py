@@ -59,8 +59,6 @@ def main():
     state_dim = max(49, ae2_latent_dim, gcn_out_dim) # ae2的输出是聚合后的，所以是ae2_latent_dim
     config['state_dim'] = state_dim
 
-    # --- BUG修复: 修正GCN的输入特征维度 ---
-    # GCN的输入特征维度应为AE1编码后的维度，而不是总波段数。
     models = {
         'ae1': Autoencoder1(input_dim=X_train.shape[0], latent_dim=ae1_latent_dim),
         'ae2': Autoencoder2(input_dim=ae1_latent_dim, latent_dim=ae2_latent_dim),
