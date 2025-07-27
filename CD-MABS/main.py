@@ -50,7 +50,7 @@ def main_classification_only():
         batch_size=BATCH_SIZE,
         learning_rate=LEARNING_RATE
     )
-    print("\n仅分类流程结束！")
+    print("\n分类流程结束")
 
 
 def main_full_pipeline():
