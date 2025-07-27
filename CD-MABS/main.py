@@ -26,7 +26,7 @@ TARGET_BAND_COUNT = 30   # 期望选择出的波段数量（此参数目前主�
 
 def main_classification_only():
     """
-    主函数：仅运行分类流程（使用PCA降维）
+    主函数：仅运行分类流程(使用PCA降维)
     """
     print("---------- 步骤1: 加载和预处理数据 (PCA方案) ----------")
     hsi_data, gt_data = load_pavia_university()
