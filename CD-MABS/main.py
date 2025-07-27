@@ -9,7 +9,7 @@ from band_selection.marl_training import train_marl_for_band_selection
 
 
 # --- 参数配置 ---
-# 数据集和模型参数
+
 PATCH_SIZE = 15          # Patch大小，必须为奇数
 TRAIN_RATIO = 0.1        # 训练集占总样本的比例
 
