@@ -1,7 +1,6 @@
 # =============================================================================
 # 文件名: data_loader.py
 # 描述: 负责加载和预处理高光谱数据。
-# (此版本已修正函数返回值数量)
 # =============================================================================
 import numpy as np
 from scipy.io import loadmat
@@ -37,10 +36,7 @@ def normalize_data(X):
     return X_norm.reshape(orig_shape)
 
 def create_train_test_split(X, y, train_percentage=0.05, random_seed=42):
-    """
-    根据专利描述，为每个类别随机抽取指定百分比的样本作为训练集。
-    这是复现精度的关键步骤之一。
-    """
+
     np.random.seed(random_seed)
     height, width, bands = X.shape
     # 将数据和标签展平，便于索引

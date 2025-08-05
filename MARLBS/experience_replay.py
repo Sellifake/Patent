@@ -1,7 +1,6 @@
 # =============================================================================
 # 文件名: experience_replay.py
 # 描述: 实现基于GMM优化的经验池。
-# (此版本已修正新生成样本的设备不一致问题)
 # =============================================================================
 import random
 from collections import deque, namedtuple
@@ -76,7 +75,6 @@ class GMMExperienceReplay:
         new_samples = []
         state_dim = high_quality_samples[0].state.shape[0]
         for data_point in generated_data:
-            # --- BUG修复: 将新创建的张量移动到正确的设备 ---
             state = torch.tensor(data_point[:state_dim], dtype=torch.float32).to(device)
             reward = data_point[state_dim]
             # 动作和下一状态是离散的，GMM无法直接生成。

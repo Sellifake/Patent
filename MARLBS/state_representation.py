@@ -1,7 +1,6 @@
 # =============================================================================
 # 文件名: state_representation.py
 # 描述: 实现专利中核心的“融合状态”计算逻辑。
-# (此版本已修正GCN输入特征的生成方式)
 # =============================================================================
 import torch
 import numpy as np
@@ -70,11 +69,9 @@ def get_gcn_state(selected_data, models, device):
     corr_matrix = torch.corrcoef(selected_data.T)
     adj = corr_matrix.to_sparse()
     
-    # --- BUG修复: 为GCN节点创建固定长度的特征向量 ---
     # 不再使用torch.eye，而是使用AE1为每个节点生成特征
     with torch.no_grad():
         features = torch.stack([ae1.encoder(selected_data[:, i]) for i in range(selected_data.shape[1])])
-    # --- 修复结束 ---
 
     with torch.no_grad():
         latent_representation = gcn(features, adj)
@@ -88,9 +85,7 @@ def get_fused_state(selected_data, models, device, fixed_state_dim):
     """
     s1 = get_meta_stats_state(selected_data, device)
     s2 = get_autoencoder_state(selected_data, models['ae1'], models['ae2'], device)
-    # --- BUG修复: 修正函数调用 ---
     s3 = get_gcn_state(selected_data, models, device)
-    # --- 修复结束 ---
     
     # 关键步骤：由于三个状态向量长度可能不同，需要填充至固定长度再相加
     s1_padded = torch.nn.functional.pad(s1, (0, fixed_state_dim - len(s1)))

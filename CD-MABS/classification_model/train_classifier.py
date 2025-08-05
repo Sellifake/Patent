@@ -5,8 +5,8 @@ from torch.utils.data import DataLoader, TensorDataset
 from tqdm import tqdm
 import numpy as np
 
-from .network import FFAW_Net # 从同级目录下的network.py导入模型
-from utils.metrics import calculate_metrics # 从utils模块导入评估函数
+from .network import FFAW_Net 
+from utils.metrics import calculate_metrics 
 
 def train_and_evaluate(X_train, y_train, X_test, y_test, num_classes, epochs, batch_size, learning_rate):
     """

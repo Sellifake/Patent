@@ -29,7 +29,6 @@ class FFAW_Net(nn.Module):
         )
         
         # --- 2D CNN部分 ---
-        # [修复]：这里的in_channels应该是 32 * num_bands，因为3D卷积的光谱维度未变
         self.conv2d_layers = nn.Sequential(
             nn.Conv2d(32 * num_bands, 64, kernel_size=(3, 3), padding=1),
             nn.BatchNorm2d(64),
@@ -40,7 +39,6 @@ class FFAW_Net(nn.Module):
         )
 
         # --- 全连接分类层 ---
-        # [修复]：动态计算展平后的大小，避免硬编码错误
         self.flatten_size = self._get_flatten_size(num_bands, patch_size)
         
         self.fc = nn.Sequential(

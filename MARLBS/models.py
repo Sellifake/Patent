@@ -6,7 +6,6 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-# 注：输出层改为2，代表选择/不选择两个动作的Q值
 class QNetwork(nn.Module):
     def __init__(self, state_dim, action_dim=2):
         super(QNetwork, self).__init__()

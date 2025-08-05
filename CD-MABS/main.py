@@ -1,7 +1,6 @@
 # main.py
 import numpy as np
 
-# [修改] 导入所有需要的函数
 from utils.data_loader import load_pavia_university, create_patches, split_data
 from classification_model.train_classifier import train_and_evaluate
 from band_selection.clustering import greedy_clustering
@@ -62,7 +61,6 @@ def main_full_pipeline():
     num_classes = np.max(gt_data)
 
     print("\n---------- 步骤2: 基于相关熵的波段聚类 ----------")
-    # 注意：波段聚类和MARL训练非常耗时，可以只运行一次，然后保存结果
     band_groups = greedy_clustering(hsi_data, num_groups=NUM_BAND_GROUPS, max_group_size=MAX_GROUP_SIZE)
 
     print("\n---------- 步骤3: 多智能体强化学习波段选择 ----------")
