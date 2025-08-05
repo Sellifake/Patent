@@ -1,5 +1,5 @@
-MARLBS - Multi-Agent Reinforcement Learning Band Selection - 基于融合状态表示和经验池优化的多智能体高光谱波段选择方法
-CD-MABS- A Multi-Agent Band Selection Method Based on Clustering and Diverse Experience Pools-基于聚类和多样经验池的多智能体波段选择方法
+# MARLBS - Multi-Agent Reinforcement Learning Band Selection - 基于融合状态表示和经验池优化的多智能体高光谱波段选择方法
+# CD-MABS- A Multi-Agent Band Selection Method Based on Clustering and Diverse Experience Pools-基于聚类和多样经验池的多智能体波段选择方法
 
 # 基于多智能体强化学习的高光谱波段选择方法
 
